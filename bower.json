@@ -1,7 +1,10 @@
 {
-  "name": "yeoman",
-  "private": true,
+  "name": "practica-ajax-datatables",
   "dependencies": {
-
-  }
+    "DataTables": "~1.10.5",
+    "jquery-validate": "~1.13.1",
+    "bootstrap": "~3.3.4",
+    "growl": "~1.2.5"
+  },
+  "devDependencies": {}
 }
