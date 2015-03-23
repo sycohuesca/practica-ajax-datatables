@@ -32,10 +32,6 @@ $columns = array(
     array( 'db' => 'nombre_doctor', 'dt' => 'nombre_doctor' ),
     array( 'db' => 'numcolegiado',  'dt' => 'numcolegiado' ),
     array( 'db' => 'clinicas',   'dt' => 'clinicas' )
-
-
-
-
 );
 
 // SQL server connection information

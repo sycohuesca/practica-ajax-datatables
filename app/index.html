@@ -14,15 +14,19 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="styles/main.css">
+
+
     <!-- endbuild -->
   </head>
   <body>
 <h1>DataTables Doctores</h1>
 
        <div class="misbotones">
-            <button class="btn btn-success" data-toggle="modal" data-target="#nuevo">Nuevo Doctor</button>
+            <button type="button" class="btn btn-success " data-toggle="modal" data-target="#modalNuevo">
+ Nuevo doctor
+</button>
             <a href="https://github.com/sycohuesca/practica-ajax-datatables" class="btn btn-primary">Ver en GitHub</a>
       </div>
         <table id="mitabla" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -48,17 +52,73 @@
                 </tr>
             </tfoot>
         </table>
+<div class="modal fade" id="modalNuevo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Añadir Doctor</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalBorrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Borrar Doctor</h4>
+      </div>
+      <div class="modal-body">
+        <p>¿ Está seguro de borrar este Doctor/a <span id='eldoctor'></span> ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" id='borrarDoctor' class="btn btn-primary">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modificar Doctor</h4>
+      </div>
+      <div class="modal-body">
+        <p>Está seguro de borrar este Doctor/a ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="pie">By Armando Jiménez Lucea.</div>
+
+
 
 
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../bower_components/DataTables/media/js/jquery.dataTables.js"></script>
     <script src="../bower_components/jquery-validate/dist/jquery.validate.js"></script>
     <script src="../bower_components/growl/javascripts/jquery.growl.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -70,8 +130,10 @@
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <script src="scripts/dataTables.bootstrap.js"></script>
+         <script src="scripts/dataTables.bootstrap.js"></script>
+        <script src="scripts/main2.js"></script>
+
+
         <!-- endbuild -->
 </body>
 </html>
