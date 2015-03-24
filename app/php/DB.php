@@ -35,7 +35,7 @@ class DB {
             $id_doctor=$fila['numero']+1;
             $sql="INSERT INTO doctores (id_doctor, nombre, numcolegiado) VALUES (\"$id_doctor\",\"$nombre\", \"$numcolegiado\"); ";
             foreach ($clinicas as $key=>$valor){
-                $sql .="INSERT INTO clinica_doctor (id_doctor,id_clinica,numdoctor) VALUES (\"$id_doctor\",(select id_clinica from clinicas where nombre=\"$valor\"),null); ";
+                $sql .="INSERT INTO clinica_doctor (id_doctor,id_clinica,numdoctor) VALUES (\"$id_doctor\",\"$valor\",null); ";
             }
             $resultado = self::ejecutaConsulta ($sql);
             return $resultado->rowCount();
@@ -51,10 +51,20 @@ class DB {
          return $salida;
        }
 
+public static function cargarClinicas (){
+    $sql=" select id_clinica, nombre from clinicas";
+     $resultado = self::ejecutaConsulta ($sql);
+    $salida=array();
+    while($fila=$resultado->fetch()){
+        $indice=$fila["id_clinica"];
+        $salida[$indice]=$fila["nombre"];
+    }
+    return $salida;
 
+}
 
 
 }
-$clinicas=array("CENTRO IMPLANTOLOGICO BARCELONA","CENTRO DE IMPLANTOLOGÍA MADRID");
-    echo DB::borrarDoctor("pedrinn");
+
+
 ?>

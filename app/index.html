@@ -24,9 +24,8 @@
 <h1>DataTables Doctores</h1>
 
        <div class="misbotones">
-            <button type="button" class="btn btn-success " data-toggle="modal" data-target="#modalNuevo">
- Nuevo doctor
-</button>
+            <button type="button" id='botonNuevo' class="btn btn-success " data-toggle="modal" data-target="#modalFormulario">
+ Nuevo doctor</button>
             <a href="https://github.com/sycohuesca/practica-ajax-datatables" class="btn btn-primary">Ver en GitHub</a>
       </div>
         <table id="mitabla" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -52,54 +51,34 @@
                 </tr>
             </tfoot>
         </table>
-<div class="modal fade" id="modalNuevo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalFormulario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Añadir Doctor</h4>
+        <h4 class="modal-title" id="titulo"></h4>
       </div>
       <div class="modal-body">
+<p id='borrar'>¿ Está seguro de borrar este Doctor/a <span id="doc"></span> ?</p>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
-      </div>
-    </div>
+<form id='formulario'  novalidate role="form">
+  <div class="form-group">
+    <label for="nombre">Nombre y Apellidos:</label>
+    <input type="text" class="form-control" name='nombre' id="nombre"
+           placeholder="Introduce un Nombre y Apellidos">
+           <label for="numcolegiado">Nª de Colegiado:</label>
+    <input type="text" class="form-control" name="numcolegiado" id="numcolegiado"
+           placeholder="Introduce el numero de colegiado.">
+           <label for="clinicas">Clínicas:</label>
+    <select multiple name="clinicas" class="form-control" id="clinicas">
+
+    </select>
   </div>
-</div>
-<div class="modal fade" id="modalBorrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Borrar Doctor</h4>
-      </div>
-      <div class="modal-body">
-        <p>¿ Está seguro de borrar este Doctor/a <span id='eldoctor'></span> ?</p>
+  </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" id='borrarDoctor' class="btn btn-primary">Borrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modificar Doctor</h4>
-      </div>
-      <div class="modal-body">
-        <p>Está seguro de borrar este Doctor/a ?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Borrar</button>
+        <span id='accion'></span>
       </div>
     </div>
   </div>
@@ -131,8 +110,7 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
          <script src="scripts/dataTables.bootstrap.js"></script>
-        <script src="scripts/main2.js"></script>
-
+        <script src="scripts/main.js"></script>
 
         <!-- endbuild -->
 </body>

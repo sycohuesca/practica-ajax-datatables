@@ -7,8 +7,8 @@ include("DB.php" );
 $nombre=$_REQUEST["doctor"];
 $respuesta=DB::borrarDoctor($nombre);
 if($respuesta==0){
-    $estado=0;
     $mensaje="Ningun doctor borrado.";
+    $estado=0;
     }
 else {
     $estado=1;
