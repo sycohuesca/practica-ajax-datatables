@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js">
+
 <head>
     <meta charset="utf-8">
     <title>Doctores</title>
@@ -18,6 +19,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
+
 <body>
     <h1>DataTables Doctores</h1>
     <div class="misbotones">
@@ -55,13 +57,13 @@
                 </div>
                 <div class="modal-body">
                     <p id='borrar'>¿ Está seguro de borrar este Doctor/a <span id="doc"></span> ?</p>
-                    <form id='formulario' method="post" action='datso.php' novalidate role="form">
+                    <form id='formulario' method="post" action='#'  role="form">
                         <div class="form-group">
                             <label for="nombre">Nombre y Apellidos:<span class='importante'> *</span>
                             </label>
-                            <input type="text" class="form-control" name='nombre' id="nombre" placeholder="Introduce un Nombre y Apellidos">
+                            <input type="text" class="form-control"  name='nombre' id="nombre" placeholder="Introduce un Nombre y Apellidos">
                             <label for="numcolegiado">Nª de Colegiado:</label>
-                            <input type="text" class="form-control" name="numcolegiado" id="numcolegiado" placeholder="Introduce el numero de colegiado.">
+                            <input type="text" class="form-control"  name="numcolegiado" id="numcolegiado" placeholder="Introduce el numero de colegiado.">
                             <label for="clinicas">Clínicas:<span class='importante'> *</span>
                             </label>
                             <select multiple name="clinicas" class="form-control" id="clinicas"></select>
@@ -70,9 +72,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                   <input type="reset" class="btn btn-default"  value="Cancelar" onclick="window.location.reload()">
-                   <input type='submit'  id='aceptar' value="Aceptar"  class="btn btn-primary">
-
+                    <input type="reset" class="btn btn-default" value="Cancelar" onclick="window.location.reload()">
+                    <span id="accion"></span>
                 </div>
             </div>
         </div>
@@ -94,4 +95,5 @@
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 </body>
+
 </html>

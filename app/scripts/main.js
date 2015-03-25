@@ -1,10 +1,33 @@
    'use strict';
 var miTabla;
 var docOriginal;
+var f=$('#formulario').validate({
+    rules:{
+        nombre:{
+            required:true,
+            lettersonly:true
+        },
+        numcolegiado:{
+            required:true,
+            digits:true
+        },
+        clinicas:{
+           required:true,
+           minlength:"2"
+        }
+    }
+});
 
 // Empieza antes de cargar el documento.
    $(document).ready(function () {
-
+$('#formulario').validate({
+    rules:{
+        nuncolegiado:{
+            required:true,
+            digits:true
+        }
+    }
+});
        $('#clinicas').load('php/cargar_clinicas.php');
         miTabla = $('#mitabla').DataTable({    // Plugin Datatables
            'processing': true,
@@ -69,11 +92,12 @@ var docOriginal;
            $('#formulario').hide();
            $('#titulo').html("Borrar doctor");
            $('#borrar').show();
+           $('#accion').html(' <input type="submit"  id="borrarboton" value="Borrar"  class="btn btn-primary">');
            var nRow = $(this).parents('tr')[0];
            var aData = miTabla.row(nRow).data();
            var doctor = aData.nombre_doctor;
            $('#doc').html(doctor);
-           $('#aceptar').click(function () {
+           $('#borrarboton').click(function () {
                $('#modalFormulario').modal('hide');
                var promesa = $.ajax({
                    data: {
@@ -86,21 +110,28 @@ var docOriginal;
                mensajes(promesa);
            });
        }); // Fin Metodo de borrado.
+       $()
+
+
 // Metodo al pulsar el boton nuevo doctor.
        $('#botonNuevo').click(function () {
            $('#titulo').html("Añadir doctor");
+           $('#accion').html('<input type="submit"  id="nuevoboton" value="Guardar"  class="btn btn-primary">');
            $('#nombre').val("");
            $('#numcolegiado').val("");
            $('#clinicas option').removeAttr("selected");
            $('#borrar').hide();
           $('#formulario').show();
+           $('#nuevoboton').click(function (){
                validarDatos("nuevo");
+           })
+
 
        });   // Fin metodo nuevo doctor
 //  Metodo al pulsar editar doctor.
        $('#mitabla').on('click', '.editarbtn', function (e) {
            e.preventDefault();
-
+$('#accion').html('<input type="submit"  id="editarboton" value="Modificar"  class="btn btn-primary">');
            $('#formulario').show();
            $('#titulo').html("Editar doctor");
            $('#borrar').hide();
@@ -116,7 +147,10 @@ var docOriginal;
            $('#clinicas').load('php/cargar_clinicas.php', {
                'clinicas': clin
            });
-           validarDatos("editar");
+           $('#editarboton').click(function(){
+                validarDatos("editar");
+           })
+
 
 
        });   // Fin metodo editar Doctor.
@@ -129,7 +163,7 @@ var docOriginal;
 // Metodo que valida los datos.
    function validarDatos(opciones) {
          $('#formulario').show();
-               $('#formulario').validate({
+      /*        $('#formulario').validate({
            rules:{
                nombre:{
                    required:true,
@@ -144,7 +178,8 @@ var docOriginal;
                   minlength:'1'
                }
            },
-                   submitHandler : function() {
+                 success : { */
+
                      $('#modalFormulario').modal('hide');
        var doctor = $('#nombre').val();
        var numcolegiado = $('#numcolegiado').val();
@@ -165,19 +200,20 @@ var docOriginal;
            dataType: 'json',
            type: "POST",
            url: php,
-       });
+      });
        mensajes(promesa);
-                   }
-
-       }); // fin del validate
 
 
+      }; // fin del validate
 
-          };  // Fin de validarDatos
+
+
+      //    };  // Fin de validarDatos
+// Metodo que pone en formato una lista.
  function listar(datos) {
            var salida = datos.replace(/,/g, '</li><li>');
            return salida;
-       }
+       }  // Fin del metodo listar.
 // Metodo que saca los mensajes tipo growl
    function mensajes(promesa) {
        promesa.done(function (data) {
