@@ -2,6 +2,38 @@ body {
     margin: auto;
     width: 90%;
 }
+
 .misbotones {
     margin-bottom: 15px;
+}
+
+.importante {
+    color: red;
+}
+
+#pie {
+    text-align: center;
+    font-size: 20px;
+}
+label.error {
+    color: red;
+    display: block;
+}
+
+.controls > .error {
+    color: #b94a48;
+    display: inline-block;
+    *display: inline;
+    padding-left: 5px;
+    vertical-align: middle;
+    *zoom: 1;
+}
+/* # estilo de pagina
+============================================*/
+.container  {
+    width: 650px;
+    margin: auto;
+}
+h2 {
+    text-align: center;
 }

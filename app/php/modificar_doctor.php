@@ -3,7 +3,8 @@ include_once('DB.php');
 $nombre= $_REQUEST['doctor'];
 $numcolegiado=$_REQUEST['numcolegiado'];
 $clinicas=$_REQUEST['clinicas'];
-$respuesta=DB::modificarDoctor($nombre,$numcolegiado,$clinicas);
+$docOriginal=$_REQUEST['docO'];
+$respuesta=DB::modificarDoctor($docOriginal,$nombre,$numcolegiado,$clinicas);
 if($respuesta==0){
     $mensaje="Ningun doctor Modificado.";
     $estado=0;

@@ -1,7 +1,7 @@
 <?php
 /**
  * Clase DB
- * S@autor Armando Jimenez Lucea.
+ * @autor Armando Jimenez Lucea.
  *
  */
 
@@ -41,9 +41,9 @@ class DB {
             return $resultado->rowCount();
 
        }
-       public static function modificarDoctor($nombre,$numcolegiado,$clinicas){
+       public static function modificarDoctor($docOriginal,$nombre,$numcolegiado,$clinicas){
           $salida=1;
-         $r1=self::borrarDoctor($nombre);
+         $r1=self::borrarDoctor($docOriginal);
          $r2=self::nuevoDoctor($nombre, $numcolegiado, $clinicas);
          if ($r1==0 || $r2==0){
              $salida=0;
