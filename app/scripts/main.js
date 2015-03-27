@@ -1,5 +1,5 @@
    'use strict';
-   // Empieza antes de cargar el documento.
+ // Empieza antes de cargar el documento.
    $(document).ready(function () {
        var miTabla;
        var docOriginal;
@@ -18,7 +18,7 @@
                }
            }
        });
-       // Metodo que valida los datos.
+// Metodo que valida los datos.
        function validarDatos(opciones) {
            validaciones.resetForm();
            $('#formulario').show();
@@ -44,14 +44,15 @@
                url: php,
            });
            mensajes(promesa);
-       }; // Fin de validarDatos
-
-       // Metodo que pone en formato una lista.
+       };
+// Fin de validarDatos
+// Metodo que pone en formato una lista.
        function listar(datos) {
                var salida = datos.replace(/,/g, '</li><li>');
                return salida;
-           } // Fin del metodo listar.
-           // Metodo que saca los mensajes tipo growl
+           }
+// Fin del metodo listar.
+// Metodo que saca los mensajes tipo growl
        function mensajes(promesa) {
            promesa.done(function (data) {
                var men = data[0]['mensaje'];
@@ -76,8 +77,9 @@
                    message: "Fallo en la consulta."
                });
            });
-       }; //Fin metodo mensajes.
-       // Añadimos escribir solo letras.
+       };
+//Fin metodo mensajes.
+// Añadimos escribir solo letras.
        $.validator.addMethod("lettersonly", function (value, element) {
            return this.optional(element) || /^[a-z ñáéíóú]+$/i.test(value);
        }, "Introduce solo letras.");
@@ -87,9 +89,9 @@
            digits: "Por favor, escribe sólo dígitos.",
            minlength: $.validator.format("Por favor, no escribas menos de {0} caracteres."),
        });
-       // Cargamos las clinicas.
+// Cargamos las clinicas.
        $('#clinicas').load('php/cargar_clinicas.php');
-       // Cargamos nuestra Tabla.
+// Cargamos nuestra Tabla.
        miTabla = $('#mitabla').DataTable({ // Plugin Datatables
            'processing': true,
            'serverSide': true,
@@ -143,14 +145,15 @@
                    return '<button type="button"  class="btn btn-danger borrarbtn" data-toggle="modal" data-target="#modalFormulario">Borrar</button>';
                }
            }]
-       }); // Fin de Datatables
-       // Metodo para asignar el boton de borrado.
+       });
+// Fin de Datatables
+// Metodo para asignar el boton de borrado.
        $('#mitabla').on('click', '.borrarbtn', function (e) {
            e.preventDefault();
            $('#panelModificaciones').hide();
            $('#borrar').show();
            $('#titulo').html("Borrar Doctor");
-           $('#accion').html(' <input type="submit"  id="botonBorrado" value="Borrar"  class="btn btn-primary">');
+           $('#accion').html('<input type="submit"  id="botonBorrado" value="Borrar"  class="btn btn-primary">');
            var nRow = $(this).parents('tr')[0];
            var aData = miTabla.row(nRow).data();
            var doctor = aData.nombre_doctor;
@@ -168,8 +171,9 @@
                });
                mensajes(promesa);
            });
-       }); // Fin Metodo de borrado.
-       // Metodo al pulsar el boton nuevo doctor.
+       });
+// Fin Metodo de borrado.
+// Metodo al pulsar el boton nuevo doctor.
        $('#nuevoDoctor').click(function (e) {
            e.preventDefault();
            $('#titulo').html("Añadir Doctor");
@@ -181,12 +185,12 @@
            $('#clinicas option').removeAttr("selected");
            $('#botonNuevo').click(function (e) {
                e.preventDefault();
-               alert(validaciones.form());
                if (validaciones.form()) {
                    validarDatos('nuevo');
                }
            })
-       }); // Fin metodo nuevo doctor
+       });
+// Fin metodo nuevo doctor
 //  Metodo al pulsar editar doctor.
        $('#mitabla').on('click', '.editarbtn', function (e) {
            e.preventDefault();
@@ -212,5 +216,7 @@
                    validarDatos('editar');
                }
            })
-       }); // Fin metodo editar Doctor.
-   }); //  Fin Document Ready.
+       });
+// Fin metodo editar Doctor.
+   });
+//  Fin Document Ready.
