@@ -4,24 +4,24 @@
    $(document).ready(function () {
 var miTabla;
 var docOriginal;
-var validaciones=$('#formulario').validate({
+       var validaciones=$('#formulario').validate({
     rules:{
         nombre:{
             required:true,
             lettersonly:true
         },
         numcolegiado:{
-            required:true,
             digits:true
         },
         clinicas:{
            required:true,
-           minlength:"2"
+           minlength:"1"
         }
     }
 });
   // Metodo que valida los datos.
    function validarDatos(opciones) {
+         validaciones.resetForm();
          $('#formulario').show();
         $('#modalFormulario').modal('hide');
        var doctor = $('#nombre').val();
@@ -177,9 +177,10 @@ $.extend($.validator.messages, {
 
 
 // Metodo al pulsar el boton nuevo doctor.
-       $('#botonNuevo').click(function (e) {
-           validaciones.resetForm();
+       $('#nuevoDoctor').click(function (e) {
            e.preventDefault();
+
+
            $('#titulo').html("Añadir Doctor");
            $('#panelModificaciones').show();
             $('#borrar').hide();
@@ -190,8 +191,9 @@ $.extend($.validator.messages, {
 
            $('#botonNuevo').click(function (e){
                e.preventDefault();
+               alert(validaciones.form());
                if (validaciones.form()){
-                 validarDatos("nuevo");
+                 validarDatos('nuevo');
                }
 
            })
